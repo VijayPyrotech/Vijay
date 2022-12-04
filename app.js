@@ -5,8 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var session = require('express-session');
-var MongoStore = require('connect-mongo');
+// var session = require('express-session');
+// var MongoStore = require('connect-mongo');
 var fs = require('fs'); 
 
 var indexRouter = require('./routes/index');
@@ -25,13 +25,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  secret: 'vijayPyrotech', 
-  resave:false, 
-  saveUninitialized:false,
-  store: MongoStore.create({ mongoUrl : mongoUri }),
-  cookie:{maxAge:180*60*1000},
-}));
+// app.use(session({
+//   secret: 'vijayPyrotech', 
+//   resave:false, 
+//   saveUninitialized:false,
+//   store: MongoStore.create({ mongoUrl : mongoUri }),
+//   cookie:{maxAge:180*60*1000},
+// }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
