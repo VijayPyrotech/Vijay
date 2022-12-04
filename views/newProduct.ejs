@@ -1,0 +1,115 @@
+<%- include partials/header %>
+
+<section id="newParty">
+    <div class="container-fluid cf-newParty">
+        <div class="row">
+            <div class="col-md-6" style="margin:auto;">
+                <h1 style="color: #4C0033; padding-bottom: 2% !important;">ADD NEW PARTY </h1>
+                <form action="/addNewProduct" method="post">
+                    <div class="col-sm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="productName">Product Name</span>
+                            <input type="text" class="form-control" required name="productName" id="productName" placeholder="Product Name">
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="productRate">Rate</span>
+                        <input type="text" class="form-control" name="productRate" id="productRate" placeholder="Rate">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="productPer">Per</label>
+                        <select class="form-select" name="productPer" id="productPer" required>
+                            <option selected value="Case">Case</option>
+                            <option value="Box">Box</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-sm btn-primary" type="submit">Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="productsList">
+    <div class="container-fluid cf-products">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="color: red; text-align:center;padding-bottom: 10px;">PRODUCTS UPDATION/DELETION</h1>
+                <table class="table table-striped" style="border: #c5c5c5 2px solid; background-color: white !important;">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Per</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% if (products) { %>
+                         <% products.forEach(product => { %>
+                            <tr>
+                                <td><%=product.name%></td>
+                                <td><%=product.rate%></td>
+                                <td><%=product.per%></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-<%=product._id%>">
+                                <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal-<%=product._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel"><%=product.name%></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                          <form action="/updateProduct/<%=product._id%>" method="post">
+                                            <div class="input-group mb-3">
+                                              <span class="input-group-text" id="partyName">Product Name</span>
+                                              <input type="text" class="form-control" value="<%=product.name%>" name="productName" id="productName" placeholder="Name">
+                                            </div>
+                                            <div class="input-group mb-3">
+                                              <span class="input-group-text" id="partyName">Rate</span>
+                                              <input type="text" class="form-control" value="<%=product.rate%>" name="productRate" id="productRate" placeholder="Rate">
+                                            </div>
+                                            <div class="input-group mb-3">
+                                              <span class="input-group-text" id="partyName">Per</span>
+                                              <input type="text" class="form-control" value="<%=product.per%>" name="per" id="per" placeholder="Per">
+                                            </div>
+                                            
+                                            <div class="input-group mb-3">
+                                              <button class="btn btn-sm btn-primary" type="submit">Update</button>
+                                            </div>
+  
+                                          </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </td>
+                                <td><a href="/deleteProduct/<%=product._id%>" role="button" class="btn btn-danger btn-sm">X</a></td>
+                              </tr>
+                         <% }) %>
+                        <% } %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+                    
+
+
+
+
+<%- include partials/footer %>

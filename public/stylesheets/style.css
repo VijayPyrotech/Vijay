@@ -1,0 +1,89 @@
+#navbar{
+  background-color: #4C0033 !important;
+  padding: 0% !important;
+  margin: 0% !important;
+}
+
+.brandTitle{
+  /* font-weight: bold; */
+  color: #f9f9f9 !important;
+  font-size: 3rem !important;
+  font-family: 'Patua One', cursive;
+  /* padding: 2% 0% 0% 2% !important; */
+}
+
+.nav-link{
+  padding-left: 25px !important;
+  font-weight: bold !important;
+  color: white !important;
+}
+
+.nav-link:hover{
+  color: yellow !important;
+}
+
+#billArea{
+  padding: 2% 7% !important;
+  background-color: #FFF9B0;
+}
+
+#billArea h1{
+  text-align: center;
+  font-family: 'Alkalami', serif;
+  background: -webkit-linear-gradient(red, brown);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tableDiv{
+  padding: 2% 0% !important;
+}
+
+#newParty{
+  text-align: center;
+  padding: 2% 7% !important;
+  background-color: #E1FFB1;
+}
+
+.partyH1{
+  font-weight: bold;
+  color: red !important;
+  font-size: 2.5rem !important;
+}
+
+.billHead{
+  text-align: center;
+  font-family: 'Alkalami', serif;
+  background: -webkit-linear-gradient(red, brown);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cf-transport{
+  padding: 2% 7% !important;
+}
+
+.cf-main{
+  padding: 2% 4% !important;
+  text-align: center;
+  
+}
+.mainHead{
+  font-family: 'Alkalami', serif;
+  color: #F9F9F9;
+  margin-bottom: 0%;
+}
+
+.footerDiv{
+  width: 100%;
+  height: 25px;
+  background-color: #790252;
+  margin: 0% !important;
+  padding: 0% !important;
+}
+
+
+.cf-products{
+  padding: 2% 14% !important;
+  background-color:lightgoldenrodyellow;
+}

@@ -1,0 +1,62 @@
+<%- include partials/header %>
+
+<section id="newParty">
+    <div class="container-fluid cf-newParty">
+        <div class="row">
+            <div class="col-md-6" style="margin:auto;">
+                <h1 style="color: #4C0033; padding-bottom: 2% !important;">ADD NEW PARTY</h1>
+                <form action="/addNewParty" method="post">
+                    <div class="col-sm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="partyName">Party Name</span>
+                            <input type="text" class="form-control" required name="partyName" id="partyName" placeholder="Party Name">
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyAdd1">Address 1</span>
+                        <input type="text" class="form-control" name="partyAdd1" id="partyAdd1" placeholder="Address 1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyAdd2">Address 2</span>
+                        <input type="text" class="form-control" name="partyAdd2" id="partyAdd2" placeholder="Address 2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyCity">City</span>
+                        <input type="text" class="form-control" name="partyCity" id="partyCity" placeholder="City">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyState">State</span>
+                        <input type="text" class="form-control" required name="partyState" id="partyState" placeholder="State">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyGST">GST</span>
+                        <input type="text" class="form-control" name="partyGST" id="partyGST" placeholder="GST">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="gstType">GST Type</label>
+                        <select class="form-select" name="gstType" id="gstType" required>
+                            <option selected>Choose...</option>
+                            <option value="Central">Central</option>
+                            <option value="State">State</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="partyPAN">PAN / AADHAR</span>
+                        <input type="text" class="form-control" name="partyPAN" id="partyPAN" placeholder="PAN / AADHAR">
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-sm btn-primary" type="submit">Add Party</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+                    
+
+
+
+
+<%- include partials/footer %>

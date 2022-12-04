@@ -1,0 +1,113 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="container-fluid cf-transport">
+    <div class="row">
+        <div class="col-md-12" style="text-align:center;padding-bottom: 2% !important;">
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add New Transport
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Transport</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/addNewTransport" method="post">
+                    <div class="modal-body">
+                      
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="transportName">Transport Name</span>
+                            <input type="text" required class="form-control" name="transportName" id="transportName" placeholder="Transport Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="place">Place</span>
+                            <input type="text" class="form-control" name="place" id="place" placeholder="Place">
+                        </div>
+                       
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-sm btn-warning">Add Transport</button>
+                    </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-md-6" style="margin: auto;">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Place</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if (transports) { %>
+                     <% transports.forEach(transport => { %>
+                        <tr>
+                            <td><%=transport.name%></td>
+                            <td><%=transport.place%></td>
+                            <td>
+                                      <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-<%=transport._id%>">
+                              <i class="bi bi-pencil-fill"></i>
+                              </button>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModal-<%=transport._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel"><%=transport.name%></h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/updatetransport/<%=transport._id%>" method="post">
+                                          <div class="input-group mb-3">
+                                            <span class="input-group-text" id="transportName">transport Name</span>
+                                            <input type="text" class="form-control" value="<%=transport.name%>" name="transportName" id="transportName" placeholder="Name">
+                                          </div>
+                                          <div class="input-group mb-3">
+                                            <span class="input-group-text" id="transportPlace">Place</span>
+                                            <input type="text" class="form-control" value="<%=transport.place%>" name="transportPlace" id="transportPlace" placeholder="Place">
+                                          </div>
+                                          <div class="input-group mb-3">
+                                            <button class="btn btn-sm btn-primary" type="submit">Update</button>
+                                          </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>  
+                            </td>
+                            <td><a href="/deleteTransport/<%=transport._id%>" type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i></a></td>
+                          </tr>
+                     <% }) %>
+                    <% } %>                 
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<%- include('./partials/footer.ejs') %>

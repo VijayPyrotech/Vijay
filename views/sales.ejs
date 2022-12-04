@@ -1,0 +1,79 @@
+<%- include partials/header %>
+
+<div class="container-fluid cf-sales" style="text-align: center;margin: auto !important;">
+    <div class="row">
+        <form action="/getSales" method="post">
+            <div class="col-md-12">
+                <h1>Sales Details</h1>
+            </div>
+            <div class="col-md-4" style="margin: auto;">
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="invoiceNo">From</span>
+                    <input type="date" class="form-control" placeholder="dd-mm-yyyy" value=""
+                    min="1997-01-01" max="2030-12-31" name="fromDate" id="fromDate" placeholder="From">
+                </div>
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="invoiceNo">To</span>
+                    <input type="date" class="form-control" placeholder="dd-mm-yyyy" value=""
+                    min="1997-01-01" max="2030-12-31" name="toDate" id="toDate" placeholder="To">
+                </div>
+                <button type="submit" class="btn btn-sm btn-success">Get Details</button>
+            </div>
+           
+        </form>
+        </div>
+
+        
+    
+</div>
+
+<div class="container-fluid cf-sales" style="text-align: center;margin: auto !important;">
+    <div class="row">
+      <div class="col-md-4" style="margin: auto !important;">
+        <table class="table" style="text-align: left;">
+            <thead>
+              <tr>
+                <th scope="col">From</th>
+                <td><%=fromDate%></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">To</th>
+                <td><%=toDate%></td>
+              </tr>
+              <tr>
+                <th scope="row">Taxable Value</th>
+                <td style="color: red; font-weight:bold">&#8377;<%=ttv%>/-</td>
+              </tr>
+              <tr>
+                <th scope="row">CGST</th>
+                <td style="color: red; font-weight:bold">&#8377;<%=tcgst%>/-</td>
+              </tr>
+              <tr>
+                <th scope="row">SGST</th>
+                <td style="color: red; font-weight:bold">&#8377;<%=tsgst%>/-</td>
+              </tr>
+              <tr>
+                <th scope="row">IGST</th>
+                <td style="color: red; font-weight:bold">&#8377;<%=tigst%>/-</td>
+              </tr>
+              <tr>
+                <th scope="row">Bill Value</th>
+                <td style="color: red; font-weight:bold">&#8377;<%=tbv%>/-</td>
+              </tr>
+              
+            </tbody>
+          </table>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<%- include partials/footer %>

@@ -1,0 +1,150 @@
+<%- include partials/header %>
+
+<section id="billArea">
+    <div class="container-fluid cf-billArea">
+        <form action="/newBillValues" method="post">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <h1>New Bill</h1>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="invoiceNo">Invoice No</span>
+                    <input type="text" inputmode="numeric" pattern="[0-9]{1,4}" required class="form-control" name="invoiceNo" id="invoiceNo" placeholder="Invoice No">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="invoiceNo">Date</span>
+                    <input type="date" class="form-control" placeholder="dd-mm-yyyy" value=""
+                    min="1997-01-01" max="2030-12-31" name="invoiceDate" id="invoiceDate" placeholder="Date">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    <label class="input-group-text" for="partyName">Party</label>
+                    <select class="form-select" name="partyName" id="partyName">
+                        <option selected>Choose...</option>
+                        <% parties.forEach(party => { %>
+                            <option value="<%= party._id %>"><%=party.name%></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+          
+            <div class="col-md-12 tableDiv">
+                <div style="background-color:white; padding: 14px 0px 0px;">
+                    <h3 class="billHead">PARTICULARS</h3>
+                </div>
+                
+                <table class="table" id="childTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Case No</th>
+                        <th scope="col">Particulars</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Per</th>
+                        <th scope="col">Amount</th>
+                        <!-- <th scope="col"></th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <% if (products) { %>
+                         <% products.forEach((product,index) => { %> -->
+                            <tr>
+                                <th class="col-1"><input type="text" class="form-control" name="caseNo" id="caseNo"></th>
+                                <td class="col-4">
+                                    <!-- <input type="text" class="form-control" name="itemName" id="itemName" value="<%=product.name%>"> -->
+                                     <select class="form-select" name="itemName" id="itemName">
+                                        <option selected></option>
+                                        <% if (products) { %>
+                                         <% products.forEach(product => { %>
+                                            <option value="<%=product.name%>"><%=product.name%></option>
+                                         <% }) %>
+                                        <% } %>
+                                    </select> 
+                                </td>
+                                <td class="col-1"><input type="text" inputmode="numeric" value min="0" defaultValue=0 onkeyup="doMath('<%=index%>')" class="form-control quantity" name="itemQty" id="itemQty"></td>
+                                <td class="col-2"><input type="text" class="form-control" name="itemRate" id="itemRate_<%=index%>" onkeyup="doMath('<%=index%>')" value="<%=product.rate%>"></td>
+                                <td class="col-1"><input type="text" class="form-control" name="itemPer" id="itemPer" value="<%=product.per%>"></td>
+                                <td class="col-2"><input type="number" class="form-control" name="itemAmount" id="itemAmount_<%=index%>" value disabled></td>
+                                <!-- <input type="hidden" name="actualValue" id="itemRate_<%=index%>" value="<%= product.rate %>"> -->
+                                <!-- <td class="col-1"><input type="button" class="btn btn-sm btn-primary" id="addrow" onclick="childrenRow()" value="+" /></td> -->
+                              </tr>
+                         <!-- <% }) %>
+                        <% } %> -->
+                      
+                    </tbody>
+                  </table>
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="input-group mb-1">
+                    <label class="input-group-text" for="gstType">GST Type</label>
+                    <select class="form-select" id="gstType">
+                        <option selected>Choose...</option>
+                        <option value="1">Tamilnadu</option>
+                        <option value="2">Other States</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    <label class="input-group-text" for="transport">Transport</label>
+                    <select class="form-select" name="transport" id="transport">
+                        <option selected></option>
+                        <% if (transports) { %>
+                         <% transports.forEach(transport => { %>
+                            <option value="<%=transport.name%>, <%=transport.place%>"><%=transport.name%></option>
+                         <% }) %>
+                        <% } %>
+                        
+                        
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Button trigger modal -->
+
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-sm btn-success">Place Bill</button>
+            </div>
+        
+        </div>
+    </form>
+    </div>
+</section>
+ 
+
+<%- include partials/footer %>
+
+<script>
+// var i = 1;
+// function childrenRow() {
+//   i++;
+//   $('#childTable').find('tbody').append('<tr><th><input type="text" class="form-control" name="caseNo" id="caseNo"></th><td><input type="text" class="form-control" name="itemName" id="itemName"></td><td><input type="text" class="form-control" name="itemQty" id="itemQty"></td><td><input type="text" class="form-control" name="itemRate" id="itemRate"></td><td><input type="text" class="form-control" name="itemPer" id="itemPer"></td><td><input type="text" class="form-control" name="itemAmount" id="itemAmount"></td><td><input type="button" class="btn btn-sm btn-primary" id="addrow" onclick="childrenRow()" value="+" /></td></tr>')    
+// }
+
+document.getElementById('invoiceDate').valueAsDate = new Date();
+
+
+function doMath(i) {
+
+var quantities = document.getElementsByClassName('quantity');
+
+// To calculate row wise subtotal and actual price
+var numOne = document.getElementById('itemRate_'+i).value;
+var numTwo = quantities[i].value;
+
+var amount = Number(numOne) * Number(numTwo);
+
+// console.log("Act value :" + actValue);
+document.getElementById('itemAmount_'+i).value = amount;
+
+}
+
+</script>
