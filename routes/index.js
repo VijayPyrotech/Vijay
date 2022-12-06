@@ -417,7 +417,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
       // set your html as the pages content
           
           await page.setContent(html, {
-            waitUntil: 'domcontentloaded'
+            waitUntil: 'networkidle2'
           })
           await page.emulateMediaType('screen');
   

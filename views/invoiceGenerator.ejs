@@ -23,7 +23,7 @@
        <style>
 
           html {
-            zoom: 0.45 !important;
+            zoom: 0.6 !important;
           }
 
          .column {
@@ -101,13 +101,13 @@
       </div>
       <div class="Column75" style="padding-bottom:3.2% !important; text-align:center; background-color:white; border-top:black 2px solid;border-right:black 2px solid;border-bottom:black 2px solid; ">      
         
-        <h1 class="head-h1" style="font-weight:900;  font-size: 4rem; font-family: 'Patua One', cursive; margin: 0; padding: 60px 0px 30px; line-height: 0px;"><span style="color: #242424;">Vijay Pyrotech</span></h1><br>
+        <h1 class="head-h1" style="font-weight:600;  font-size: 4rem; font-family: 'Patua One', cursive; margin: 0; padding: 60px 0px 30px; line-height: 0px;"><span style="color: #242424;">Vijay Pyrotech</span></h1><br>
         <h2>No.2/468-A, Sivakasi to Sattur Main Road,<br> Mettamalai, Sattur - 626 203</h2>
             <!-- <h2>Contact : <strong>XXXXX XXXXX</strong></h2> -->
             <h2>License No.: <strong>390/2022</strong></h2>
             <h1 style="border: black 2px solid; border-radius: 10px;display: inline-block; padding:2px 6px">GST IN: <strong>33ERGPP2057H1ZR</strong></h1>
       </div>
-      <div  style="padding: 3% 1%; border-left: black 2px solid;border-right: black 2px solid;border-top: #c5c5c5 2px solid;border-bottom: #c5c5c5 2px solid;">
+      <div  style="padding: 0% 1% 1% !important; border-left: black 2px solid;border-right: black 2px solid;border-top: #c5c5c5 2px solid;border-bottom: #c5c5c5 2px solid;">
         <div class="row">
           <div class="halfColumn" style="padding-top: 2% !important">
             <h2 class="partyName" style="font-weight:bold;">M/S. <%= bill.party %></h2>
@@ -131,7 +131,7 @@
           </div>
         </div>
       </div>
-      <div  style="padding: 3% 0%; background-color:white; border-left: black 2px solid;border-right: black 2px solid;border-top: #c5c5c5 2px solid;border-bottom: #c5c5c5 2px solid;">
+      <div  style="padding: 0% 0%; background-color:white; border-left: black 2px solid;border-right: black 2px solid;border-top: #c5c5c5 2px solid;border-bottom: #c5c5c5 2px solid;">
         <table class="billTable table" style=" margin: auto !important;">
             <thead style="background-color: #DFDFDE !important;  color: black !important; ">
               <tr>
@@ -148,12 +148,12 @@
                     <% bill.billItems.forEach(item => { %>
                         <tr>
                           
-                          <td class="col-1" style="font-size: 1.25rem;font-weight: bold;"><%=item.caseNum%></td>
-                          <td class="col-2" style="font-size: 1.25rem;font-weight: bold;"><%=item.name%></td>
-                          <td class="col-1" style="font-size: 1.25rem;font-weight: bold;"><%=item.quantity%></td>
-                          <td class="col-1" style="font-size: 1.25rem;font-weight: bold;">&#8377;<%=item.Rate%></td>
-                          <td class="col-1" style="font-size: 1.25rem;font-weight: bold;"><%=item.per%></td>
-                          <td class="col-1" style="font-size: 1.25rem;font-weight: bold;">&#8377;<%=item.subTotal%></td>
+                          <td class="col-1" style="font-size: 1.4rem;font-weight: bold;"><%=item.caseNum%></td>
+                          <td class="col-2" style="font-size: 1.4rem;font-weight: bold;"><%=item.name%></td>
+                          <td class="col-1" style="font-size: 1.4rem;font-weight: bold;"><%=item.quantity%></td>
+                          <td class="col-1" style="font-size: 1.4rem;font-weight: bold;">&#8377;<%=item.Rate%></td>
+                          <td class="col-1" style="font-size: 1.4rem;font-weight: bold;"><%=item.per%></td>
+                          <td class="col-1" style="font-size: 1.4rem;font-weight: bold;">&#8377;<%=item.subTotal%></td>
                         </tr>
                     <% }) %>
             </tbody>
@@ -178,37 +178,37 @@
                 <table style="text-align: right; font-weight: bold; width: 100%;"  class="table">
                     <tbody>
                         <tr>
-                        <td style="font-size: 1.25rem;">Goods Value: </td>
-                        <td style="font-size: 1.25rem;">&#8377;<%=bill.billAmount%>/- &nbsp;</td>
+                        <td style="font-size: 1.5rem;">Goods Value: </td>
+                        <td style="font-size: 1.5rem;">&#8377;<%=bill.billAmount%>/- &nbsp;</td>
                         </tr>
                         <tr>
-                          <td style="font-size: 1.25rem;">Packing Charge 3%: </td>
-                          <td style="font-size: 1.25rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.pkgCharge%>/- &nbsp;</p></td>
+                          <td style="font-size: 1.5rem;">Packing Charge 3%: </td>
+                          <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.pkgCharge%>/- &nbsp;</p></td>
                       </tr>
                       <tr>
-                        <td style="font-size: 1.25rem;">Taxable Value: </td>
-                        <td style="font-size: 1.25rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.taxableValue%>/- &nbsp;</p></td>
+                        <td style="font-size: 1.5rem;">Taxable Value: </td>
+                        <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.taxableValue%>/- &nbsp;</p></td>
                       </tr>
                         <% if (bill.igst !== 0) { %>
                             <tr>
-                                <td style="font-size: 1.25rem;">IGST 18%: </td>
-                                <td style="font-size: 1.25rem;"><p>&#8377;<%=bill.igst%>/- &nbsp;</p></td>
+                                <td style="font-size: 1.5rem;">IGST 18%: </td>
+                                <td style="font-size: 1.5rem;"><p>&#8377;<%=bill.igst%>/- &nbsp;</p></td>
                             </tr>
                         <% } %>
                         
                         <% if (bill.cgst !== 0) { %>
                         <tr>
-                            <td style="font-size: 1.25rem;">CGST 9%: </td>
-                            <td style="font-size: 1.25rem;"><p>&#8377;<%=bill.cgst%>/- &nbsp;</p></td>
+                            <td style="font-size: 1.5rem;">CGST 9%: </td>
+                            <td style="font-size: 1.5rem;"><p>&#8377;<%=bill.cgst%>/- &nbsp;</p></td>
                         </tr>
                         <tr>
-                            <td style="font-size: 1.25rem;">SGST 9%: </td>
-                            <td style="font-size: 1.25rem;"><p>&#8377;<%=bill.sgst%>/- &nbsp;</p></td>
+                            <td style="font-size: 1.5rem;">SGST 9%: </td>
+                            <td style="font-size: 1.5rem;"><p>&#8377;<%=bill.sgst%>/- &nbsp;</p></td>
                         </tr>
                         <% } %>
                       <tr>
-                        <td style="font-size: 1.25rem;">Total: </td>
-                        <td style="font-size: 1.25rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.finalBillValue%>/- &nbsp;</p></td>
+                        <td style="font-size: 1.5rem;">Total: </td>
+                        <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.finalBillValue%>/- &nbsp;</p></td>
                     </tr>
                         
                     </tbody>
