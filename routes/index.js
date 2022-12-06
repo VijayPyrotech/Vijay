@@ -404,6 +404,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
           const browser = await puppeteer.launch({
             args: [
               '--no-sandbox',
+              '--font-render-hinting=none'
             ],
             executablePath: stats.executablePath,
             headless: true
