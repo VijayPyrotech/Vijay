@@ -4,6 +4,7 @@
   margin: 0% !important;
 }
 
+
 .brandTitle{
   /* font-weight: bold; */
   color: #f9f9f9 !important;
@@ -86,4 +87,18 @@
 .cf-products{
   padding: 2% 14% !important;
   background-color:lightgoldenrodyellow;
+}
+
+@media only screen and (min-width:320px) and  (max-width: 480px){
+
+  .table{
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  .table > tbody > tr >  td{
+    min-width: 125px !important;
+  }
+
 }

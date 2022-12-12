@@ -38,47 +38,49 @@
                 <div style="background-color:white; padding: 14px 0px 0px;">
                     <h3 class="billHead">PARTICULARS</h3>
                 </div>
-                
-                <table class="table" id="childTable">
-                    <thead>
-                      <tr>
-                        <th scope="col">Case No</th>
-                        <th scope="col">Particulars</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Rate</th>
-                        <th scope="col">Per</th>
-                        <th scope="col">Amount</th>
-                        <!-- <th scope="col"></th> -->
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <!-- <% if (products) { %>
-                         <% products.forEach((product,index) => { %> -->
-                            <tr>
-                                <th class="col-1"><input type="text" class="form-control" name="caseNo" id="caseNo"></th>
-                                <td class="col-4">
-                                    <!-- <input type="text" class="form-control" name="itemName" id="itemName" value="<%=product.name%>"> -->
-                                     <select class="form-select" name="itemName" id="itemName">
-                                        <option selected></option>
-                                        <% if (products) { %>
-                                         <% products.forEach(product => { %>
-                                            <option value="<%=product.name%>"><%=product.name%></option>
-                                         <% }) %>
-                                        <% } %>
-                                    </select> 
-                                </td>
-                                <td class="col-1"><input type="text" inputmode="numeric" value min="0" defaultValue=0 onkeyup="doMath('<%=index%>')" class="form-control quantity" name="itemQty" id="itemQty"></td>
-                                <td class="col-2"><input type="text" class="form-control" name="itemRate" id="itemRate_<%=index%>" onkeyup="doMath('<%=index%>')" value="<%=product.rate%>"></td>
-                                <td class="col-1"><input type="text" class="form-control" name="itemPer" id="itemPer" value="<%=product.per%>"></td>
-                                <td class="col-2"><input type="number" class="form-control" name="itemAmount" id="itemAmount_<%=index%>" value disabled></td>
-                                <!-- <input type="hidden" name="actualValue" id="itemRate_<%=index%>" value="<%= product.rate %>"> -->
-                                <!-- <td class="col-1"><input type="button" class="btn btn-sm btn-primary" id="addrow" onclick="childrenRow()" value="+" /></td> -->
-                              </tr>
-                         <!-- <% }) %>
-                        <% } %> -->
-                      
-                    </tbody>
-                  </table>
+                <div class="table-responsive">
+                    <table class="table" id="childTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">Case No</th>
+                            <th scope="col">Particulars</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Per</th>
+                            <th scope="col">Amount</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <% if (products) { %>
+                             <% products.forEach((product,index) => { %> -->
+                                <tr>
+                                    <td ><input type="text" class="form-control" name="caseNo" id="caseNo"></td>
+                                    <td >
+                                        <!-- <input type="text" class="form-control" name="itemName" id="itemName" value="<%=product.name%>"> -->
+                                         <select class="form-select" name="itemName" id="itemName">
+                                            <option selected></option>
+                                            <% if (products) { %>
+                                             <% products.forEach(product => { %>
+                                                <option value="<%=product.name%>"><%=product.name%></option>
+                                             <% }) %>
+                                            <% } %>
+                                        </select> 
+                                    </td>
+                                    <td><input type="text" inputmode="numeric" value min="0" defaultValue=0 onkeyup="doMath('<%=index%>')" class="form-control quantity" name="itemQty" id="itemQty"></td>
+                                    <td><input type="text" class="form-control" name="itemRate" id="itemRate_<%=index%>" onkeyup="doMath('<%=index%>')" value="<%=product.rate%>"></td>
+                                    <td><input type="text" class="form-control" name="itemPer" id="itemPer" value="<%=product.per%>"></td>
+                                    <td><input type="number" class="form-control" name="itemAmount" id="itemAmount_<%=index%>" value disabled></td>
+                                    <!-- <input type="hidden" name="actualValue" id="itemRate_<%=index%>" value="<%= product.rate %>"> -->
+                                    <!-- <td class="col-1"><input type="button" class="btn btn-sm btn-primary" id="addrow" onclick="childrenRow()" value="+" /></td> -->
+                                  </tr>
+                             <!-- <% }) %>
+                            <% } %> -->
+                          
+                        </tbody>
+                      </table>
+                </div>
+               
             </div>
             <!-- <div class="col-md-4">
                 <div class="input-group mb-1">

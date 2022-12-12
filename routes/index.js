@@ -517,7 +517,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
          var totalBillValue = 0;
          
          result.forEach(bill => {
-          totalTaxableValue += bill.billAmount;
+          totalTaxableValue += bill.taxableValue;
           totalSGST += bill.sgst;
           totalCGST += bill.cgst;
           totalIGST += bill.igst;
