@@ -15,6 +15,7 @@ var schema = new Schema({
     transport:{type:String},
     billItems:{type:Object, required:true},
     billAmount:{type:Number},
+    totalCases:{type:Number},
     pkgCharge:{type:Number},
     taxableValue:{type:Number},
     cgst:{type:Number, default:0},

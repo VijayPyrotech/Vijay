@@ -68,7 +68,7 @@ router.post('/newBillValues', function(req,res,next){
   var invoiceNumber = req.body.invoiceNo;
   var invoiceDate = req.body.invoiceDate;
   var cusId = req.body.partyName;
-  var pkgCharge = 0;
+  // var pkgCharge = 0;
   var finalBillValue = 0;
   
   const {caseNo} = req.body;
@@ -122,10 +122,12 @@ router.post('/newBillValues', function(req,res,next){
     netBillValu += Number(item.subTotal);
   })
 
-  pkgCharge = Number(netBillValu) * 0.03;
-  netBillValue = pkgCharge + netBillValu;
+  // pkgCharge = Number(netBillValu) * 0.03;
+  // netBillValue = pkgCharge + netBillValu;
 
-  console.log(cartItems, cusId, totalItems, pkgCharge, req.body.transport, netBillValue);
+  netBillValue = netBillValu;
+
+  console.log(cartItems, cusId, totalItems, req.body.transport, netBillValue);
 
   Client.findById(cusId, function(err,resultt){
     if(err){
@@ -164,7 +166,8 @@ router.post('/newBillValues', function(req,res,next){
       transport:req.body.transport,
       billItems:cartItems,
       billAmount:netBillValu,
-      pkgCharge: pkgCharge,
+      totalCases:totalItems,
+      pkgCharge: 0,
       taxableValue:netBillValue.toFixed(2),
       cgst:cgst.toFixed(2),
       sgst:sgst.toFixed(2),
@@ -542,7 +545,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
       Bill.find({
         billDate:{
           $gte: req.body.fromDate,
-          $lt: req.body.toDate
+          $lte: req.body.toDate
         }
       }, function(err,result){
          var totalTaxableValue = 0;

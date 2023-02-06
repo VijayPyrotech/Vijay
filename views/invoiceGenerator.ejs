@@ -181,10 +181,10 @@
                         <td style="font-size: 1.5rem;">Goods Value: </td>
                         <td style="font-size: 1.5rem;">&#8377;<%=bill.billAmount%>/- &nbsp;</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                           <td style="font-size: 1.5rem;">Packing Charge 3%: </td>
                           <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.pkgCharge%>/- &nbsp;</p></td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td style="font-size: 1.5rem;">Taxable Value: </td>
                         <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.taxableValue%>/- &nbsp;</p></td>
@@ -209,7 +209,11 @@
                       <tr>
                         <td style="font-size: 1.5rem;">Total: </td>
                         <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;">&#8377;<%=bill.finalBillValue%>/- &nbsp;</p></td>
-                    </tr>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 1.5rem;">Total No. of Cases: </td>
+                        <td style="font-size: 1.5rem;"><p style="color: black; font-weight: bold;"><%=bill.totalCases%> &nbsp;</p></td>
+                      </tr>
                         
                     </tbody>
                 </table>
