@@ -445,15 +445,19 @@ router.get('/printBillOriginal/:id', function(req,res,next){
               '--use-mock-keychain',
             ],
             executablePath: stats.executablePath,
-            headless: true
+            headless: false
           })  
   
         
 
       // create a new page
          const page = await browser.newPage();
+
+          // Configure the navigation timeout
+          await page.setDefaultNavigationTimeout(0);
+
          await page.setCacheEnabled(false); 
-      // set your html as the pages content
+         // set your html as the pages content
           
           await page.setContent(html, {
             waitUntil: 'domcontentloaded'
