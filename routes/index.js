@@ -391,42 +391,38 @@ router.get('/printBillOriginal/:id', function(req,res,next){
     (async () => {
     
       const PCR = require("puppeteer-chromium-resolver");
-    //   const option = {
-    //     revision: "",
-    //     detectionPath: "",
-    //     folderName: ".chromium-browser-snapshots",
-    //     defaultHosts: ["https://storage.googleapis.com", "https://npm.taobao.org/mirrors"],
-    //     hosts: [],
-    //     cacheRevisions: 2,
-    //     retry: 3,
-    //     silent: false
-    // };
-      const stats = await PCR.getStats();
-
+      const option = {
+        revision: "",
+        detectionPath: "",
+        folderName: ".chromium-browser-snapshots",
+        defaultHosts: ["https://storage.googleapis.com", "https://npm.taobao.org/mirrors"],
+        hosts: [],
+        cacheRevisions: 2,
+        retry: 3,
+        silent: false
+    };
+    
+    const stats = await PCR(option);
       // launch a new chrome instance
          const browser = await stats.puppeteer.launch({
           headless:false,
           args: ['--no-sandbox'],
-        executablePath: stats.executablePath
-        }).catch(function(error) {
-        console.log(error);
-    }); 
+          executablePath: stats.executablePath
+        }); 
   
-        
-
       // create a new page
          const page = await browser.newPage();
 
           // Configure the navigation timeout
           // await page.setDefaultNavigationTimeout(0);
 
-         await page.setCacheEnabled(false); 
+        //  await page.setCacheEnabled(false); 
          // set your html as the pages content
           
           await page.setContent(html, {
             waitUntil: 'domcontentloaded'
           })
-          await page.emulateMediaType('screen');
+          await page.emulateMediaType('print');
   
       // create a pdf buffer
           const pdfBuffer = await page.pdf({
