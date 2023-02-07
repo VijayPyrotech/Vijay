@@ -405,7 +405,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
 
       // launch a new chrome instance
          const browser = await puppeteer.launch({
-          // ignoreDefaultArgs: ['--disable-extensions'],
+          headless:true,
           args: [ '--disable-gpu',
         '--disable-dev-shm-usage',
         '--disable-setuid-sandbox',
