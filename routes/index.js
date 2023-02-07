@@ -391,28 +391,22 @@ router.get('/printBillOriginal/:id', function(req,res,next){
     (async () => {
     
       const PCR = require("puppeteer-chromium-resolver");
-      const option = {
-        revision: "",
-        detectionPath: "",
-        folderName: ".chromium-browser-snapshots",
-        defaultHosts: ["https://storage.googleapis.com", "https://npm.taobao.org/mirrors"],
-        hosts: [],
-        cacheRevisions: 2,
-        retry: 3,
-        silent: false
-    };
-      const stats = await PCR(option);
+    //   const option = {
+    //     revision: "",
+    //     detectionPath: "",
+    //     folderName: ".chromium-browser-snapshots",
+    //     defaultHosts: ["https://storage.googleapis.com", "https://npm.taobao.org/mirrors"],
+    //     hosts: [],
+    //     cacheRevisions: 2,
+    //     retry: 3,
+    //     silent: false
+    // };
+      const stats = await PCR.getStats();
 
       // launch a new chrome instance
          const browser = await stats.puppeteer.launch({
           headless:false,
-          args: [ '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--no-first-run',
-        '--no-sandbox',
-        '--no-zygote',
-        '--single-process',],
+          args: ['--no-sandbox'],
         executablePath: stats.executablePath
         }).catch(function(error) {
         console.log(error);
