@@ -415,6 +415,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
          const browser = await stats.puppeteer.launch({
           headless:false,
           args: ['--no-sandbox','--disable-setuid-sandbox'],
+          executablePath: stats.executablePath
         }); 
   
       // create a new page
