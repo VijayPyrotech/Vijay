@@ -6,6 +6,7 @@ var Transport = require('../modals/transport');
 var Bill = require('../modals/bills');
 const { ToWords } = require('to-words');
 var Xvfb = require('xvfb');
+var xvfb = new Xvfb();
 
 const toWords = new ToWords();
 
@@ -391,10 +392,10 @@ router.get('/printBillOriginal/:id', function(req,res,next){
 
     (async () => {
 
-      var xvfb = new Xvfb({
-        silent: true,
-        xvfb_args: ["-screen", "0", '1280x720x24', "-ac"],
-      });
+      // var xvfb = new Xvfb({
+      //   silent: true,
+      //   xvfb_args: ["-screen", "0", '1280x720x24', "-ac"],
+      // });
       xvfb.start((err)=>{if (err) console.error(err)});
     
       const PCR = require("puppeteer-chromium-resolver");
