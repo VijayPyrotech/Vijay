@@ -389,6 +389,12 @@ router.get('/printBillOriginal/:id', function(req,res,next){
       }
 
     (async () => {
+
+      var xvfb = new Xvfb({
+        silent: true,
+        xvfb_args: ["-screen", "0", '1280x720x24', "-ac"],
+      });
+      xvfb.start((err)=>{if (err) console.error(err)});
     
       const PCR = require("puppeteer-chromium-resolver");
       const option = {
@@ -407,16 +413,15 @@ router.get('/printBillOriginal/:id', function(req,res,next){
          const browser = await stats.puppeteer.launch({
           headless:false,
           args: ['--no-sandbox','--disable-setuid-sandbox'],
-          executablePath: stats.executablePath
         }); 
   
       // create a new page
          const page = await browser.newPage();
 
           // Configure the navigation timeout
-          // await page.setDefaultNavigationTimeout(0);
+          await page.setDefaultNavigationTimeout(0);
 
-        //  await page.setCacheEnabled(false); 
+         await page.setCacheEnabled(false); 
          // set your html as the pages content
           
           await page.setContent(html, {
