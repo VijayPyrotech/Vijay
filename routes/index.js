@@ -406,7 +406,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
       // launch a new chrome instance
          const browser = await stats.puppeteer.launch({
           headless:false,
-          args: ['--no-sandbox'],
+          args: ['--no-sandbox','--disable-setuid-sandbox'],
           executablePath: stats.executablePath
         }); 
   
@@ -422,7 +422,7 @@ router.get('/printBillOriginal/:id', function(req,res,next){
           await page.setContent(html, {
             waitUntil: 'domcontentloaded'
           })
-          await page.emulateMediaType('print');
+          await page.emulateMediaType('screen');
   
       // create a pdf buffer
           const pdfBuffer = await page.pdf({
