@@ -5,6 +5,7 @@ var Product = require('../modals/products');
 var Transport = require('../modals/transport');
 var Bill = require('../modals/bills');
 const { ToWords } = require('to-words');
+var Xvfb = require('xvfb');
 
 const toWords = new ToWords();
 
