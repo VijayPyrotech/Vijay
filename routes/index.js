@@ -404,16 +404,19 @@ router.get('/printBillOriginal/:id', function(req,res,next){
       const stats = await PCR(option);
 
       // launch a new chrome instance
-         const browser = await puppeteer.launch({
-          headless:true,
+         const browser = await stats.puppeteer.launch({
+          headless:false,
           args: [ '--disable-gpu',
         '--disable-dev-shm-usage',
         '--disable-setuid-sandbox',
         '--no-first-run',
         '--no-sandbox',
         '--no-zygote',
-        '--single-process',]
-        }); 
+        '--single-process',],
+        executablePath: stats.executablePath
+        }).catch(function(error) {
+        console.log(error);
+    }); 
   
         
 
