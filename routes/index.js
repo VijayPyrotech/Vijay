@@ -21,7 +21,12 @@ var fs = require("fs");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Bill.find(function(err,bills){
+  Bill.find(
+    {
+      billDate: {
+        $gte: new Date("2023-04-01T00:00:00.000+00:00")
+      }
+    },function(err,bills){
     if(err){
       console.log(err);
       return res.redirect('/');
