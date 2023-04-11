@@ -1,0 +1,110 @@
+<%- include partials/header %>
+
+<div class="container-fluid cf-main">
+    <div class="row">
+        <div class="col-md-12" style="background-color: #4C0033;;padding-top: 15px;">
+            <h1 class="mainHead">2022 - 2023 BILLS</h1>
+        </div>
+        <h4 style="padding: 2px 4px; color:white; display: inline-block; background-color: #2c051f;">BILL HISTORY</h4>
+        <div class="col-md-12" style="background-color: #faf6cf; margin: 10px 0px;height: 400px; overflow: auto">
+          
+          <table class="table" style="text-align: left; height:400px">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Party</th>
+                  <th scope="col">Items</th>
+                  <th scope="col">Bill</th>
+                  <th scope="col">Pkg Charge</th>
+                  <th scope="col">Taxable Value</th>
+                  <th scope="col">CGST</th>
+                  <th scope="col">SGST</th>
+                  <th scope="col">IGST</th>
+                  <th scope="col">Total Bill</th>
+                  <th scope="col">Transport</th>
+                  <th scope="col">Original</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% if (bills) { %>
+                   <% bills.forEach(bill => { %>
+                 
+                      <tr>
+                        <th scope="row"><%= bill.invoiceNumber %></th>
+                        <td><%= bill.billDate.toISOString().substring(0, 10) %></td>
+                        <td><%=bill.party%></td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-<%=bill._id%>">
+                                Items
+                              </button>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModal-<%=bill._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Particulars</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table">
+                                            <thead>
+                                              <tr style="background-color: yellow;color:black;">
+                                                <th scope="col">Case No</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Rate</th>
+                                                <th scope="col">Per</th>
+                                                <th scope="col">Subtotal</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% bill.billItems.forEach(items => { %>
+                                                    <tr style="background-color: rgb(248, 248, 140);">
+                                                        <td><%=items.caseNum%></td>
+                                                        <td><%=items.name%></td>
+                                                        <td><%=items.quantity%></td>
+                                                        <td>&#8377;<%=items.Rate%></td>
+                                                        <td><%=items.per%></td>
+                                                        <td>&#8377;<%=items.subTotal%></td>
+                                                      </tr>
+                                                <% }) %>
+                                              
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </td>
+                        <td>&#8377;<%=bill.billAmount%></td>
+                        <td>&#8377;<%=bill.pkgCharge%></td>
+                        <td>&#8377;<%=bill.taxableValue%></td>
+                        <td>&#8377;<%=bill.cgst%></td>
+                        <td>&#8377;<%=bill.sgst%></td>
+                        <td>&#8377;<%=bill.igst%></td>
+                        <td>&#8377;<%=bill.finalBillValue%></td>
+                        <td><%=bill.transport%></td>
+                        <td><a href="/printBillOriginal/<%=bill._id%>" role="button" class="btn btn-secondary btn-sm"><i class="bi bi-printer-fill"></i></a></td>
+                        <!-- <td><a href="/printBillDupe/<%=bill._id%>" role="button" class="btn btn-secondary btn-sm"><i class="bi bi-printer-fill"></i></a></td> -->
+                        <td><a href="/deleteBill/<%=bill._id%>" role="button" class="btn btn-danger btn-sm">X</a></td>
+                      </tr>
+                    
+                     
+                   <% }) %>
+                  <% } %>
+                
+               
+              </tbody>
+            </table>
+      </div>
+      </div>
+      </div>
+      
+<%- include partials/header %>

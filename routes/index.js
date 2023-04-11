@@ -43,6 +43,23 @@ router.get('/', function(req, res, next) {
   
 });
 
+router.get('/oldBills', function(req,res,next){
+  Bill.find(
+    {
+      billDate: {
+        $gte: new Date("2022-04-01T00:00:00.000+00:00"),
+        $lte: new Date("2023-03-31T00:00:00.000+00:00")
+      }
+    },function(err,bills){
+    if(err){
+      console.log(err);
+      return res.redirect('/');
+    }
+    res.render('2223bills', { title: '22 - 23 Bills | Vijay Pyrotech', bills:bills});
+    
+  }).sort({invoiceNumber:-1});
+})
+
 router.get('/newBill', function(req, res, next) {
 
   Client.find(function(err,result){
