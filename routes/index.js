@@ -5,6 +5,9 @@ var Product = require('../modals/products');
 var Transport = require('../modals/transport');
 var Bill = require('../modals/bills');
 const { ToWords } = require('to-words');
+
+
+
 var Xvfb = require('xvfb');
 var xvfb = new Xvfb();
 
@@ -12,12 +15,10 @@ const toWords = new ToWords();
 
 var fs = require('fs');
 
-// var pdf = require("pdf-creator-node");
 const puppeteer = require('puppeteer')
 var fs = require("fs");
 
-// var _basePath = 'file:///' + __dirname + '\\Media\\';
-// var options = {format:'A4', base:_basePath};
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -39,7 +40,7 @@ router.get('/', function(req, res, next) {
       res.render('index', { title: 'Home | Vijay Pyrotech', bills:bills, clients:clients});
     })
     
-  }).sort({invoiceNumber:-1});
+  }).sort({invoiceNumber:-1}).collation({locale: "en_US", numericOrdering: true});
   
 });
 

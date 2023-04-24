@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, parameterLimit: 1000000 }));
 app.use(cookieParser());
 // app.use(session({
 //   secret: 'vijayPyrotech', 
